@@ -16,7 +16,7 @@ int main() {
   std::cin >> Divisor;
   
   //If either the dividend or divisor are decimals, append "0" to the
-  //beginning of the string to properly convert the strings to decimal.
+  //beginning of the string to properly convert the strings to integers.
   
   if (Dividend[0] == '.') {
       Dividend = Dividend.insert(0, "0");
