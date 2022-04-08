@@ -19,7 +19,7 @@ int main() {
     std::cin >> Dividend;
   }
 
-  //Prompts user for divisor and reprompts if input is not an integer
+  //Prompts user for divisor
   std::cout << "What do you want to be the divisor? ";
   std::cin >> Divisor;
 
