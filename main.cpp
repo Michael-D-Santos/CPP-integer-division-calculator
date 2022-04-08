@@ -8,12 +8,27 @@ int main() {
   std::string Dividend;
   std::string Divisor;
   
+  //Prompts user for dividend
   std::cout << "What do you want to be the dividend? ";
-  //Prompts user for Dividend
   std::cin >> Dividend;
+
+  //While a character that is not 0-9 is found in the dividend input, reprompt
+  
+  while (Dividend.find_first_not_of("0123456789") != std::string::npos) {
+    std::cout << ("Try again, that wasn't an integer...\n");
+    std::cin >> Dividend;
+  }
+
+  //Prompts user for divisor and reprompts if input is not an integer
   std::cout << "What do you want to be the divisor? ";
-  //Prompts user for Divisor
   std::cin >> Divisor;
+
+  //While a character that is not 0-9 is found in the divisor input, reprompt
+  
+  while (Divisor.find_first_not_of("0123456789") != std::string::npos) {
+    std::cout << ("Try again, that wasn't an integer...\n");
+    std::cin >> Divisor;
+  }
   
   //If either the dividend or divisor are decimals, append "0" to the
   //beginning of the string to properly convert the strings to integers.
@@ -30,7 +45,6 @@ int main() {
   If and else-if statement preform excpetion handling (i.e. if either the 
   divisor or the divisor AND the dividend are 0, return "undefined")
   */
-  
   
   if (round(std::stoi(Divisor)) == 0) {
       std::cout << "ERROR: " << round(std::stoi(Dividend)) << "/" << "0" << 
