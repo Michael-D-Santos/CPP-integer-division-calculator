@@ -15,7 +15,7 @@ int main() {
   //While a character that is not 0-9 is found in the dividend input, reprompt
   
   while (Dividend.find_first_not_of("0123456789") != std::string::npos) {
-    std::cout << ("Try again, that wasn't an integer...\n");
+    std::cout << ("Try again, use numeric inputs only...\n");
     std::cin >> Dividend;
   }
 
@@ -26,7 +26,7 @@ int main() {
   //While a character that is not 0-9 is found in the divisor input, reprompt
   
   while (Divisor.find_first_not_of("0123456789") != std::string::npos) {
-    std::cout << ("Try again, that wasn't an integer...\n");
+    std::cout << ("Try again, use numeric inputs only...\n");
     std::cin >> Divisor;
   }
   
