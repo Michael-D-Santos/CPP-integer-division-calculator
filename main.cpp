@@ -2,6 +2,28 @@
 #include <string>
 #include <cmath>
 
+/*
+If input starts with a decimal, append "0" to beginning of string. In addition,
+While a character that is not 0-9 is found in the dividend/divisor input, 
+reprompt until the user inputs a valid string to be stored in defined variable.
+*/
+
+std::string checkInput(std::string &judgedInput) {
+  std::string output;
+
+  while (judgedInput.find_first_not_of(".0123456789") != std::string::npos) {
+    std::cout << "Try again, use numeric inputs only...\n";
+    std::cin >> judgedInput;
+    }
+
+  if (judgedInput.front() == '.' && judgedInput.find_first_not_of(".0123456789")
+      == std::string::npos) {
+        output = std::stoi(judgedInput.insert(0, "0"));
+  }
+
+  return output;
+}
+
 int main() {
   std::cout << "INTEGER DIVISION CALCULATOR:\n\n";
   
@@ -9,36 +31,18 @@ int main() {
   std::string Divisor;
   
   //Prompts user for dividend
+
   std::cout << "What do you want to be the dividend? ";
   std::cin >> Dividend;
-
-  //While a character that is not 0-9 is found in the dividend input, reprompt
   
-  while (Dividend.find_first_not_of("0123456789") != std::string::npos) {
-    std::cout << ("Try again, use numeric inputs only...\n");
-    std::cin >> Dividend;
-  }
+  checkInput(Dividend);
 
   //Prompts user for divisor
+
   std::cout << "What do you want to be the divisor? ";
   std::cin >> Divisor;
-
-  //While a character that is not 0-9 is found in the divisor input, reprompt
   
-  while (Divisor.find_first_not_of("0123456789") != std::string::npos) {
-    std::cout << ("Try again, use numeric inputs only...\n");
-    std::cin >> Divisor;
-  }
-  
-  //If either the dividend or divisor are decimals, append "0" to the
-  //beginning of the string to properly convert the strings to integers.
-  
-  if (Dividend[0] == '.') {
-      Dividend = Dividend.insert(0, "0");
-  }
-  if (Divisor[0] == '.') {
-      Divisor = Divisor.insert(0, "0");
-  }
+  checkInput(Divisor);
   
   /*
   Calculates the quotient obtained by integer division and the remainder
@@ -52,8 +56,8 @@ int main() {
   } else if (round(std::stoi(Dividend)) && round(std::stoi(Divisor)) == 0) {
       std::cout << "ERROR: " << "0" << "/" << "0" << " is undefined";
   } else {
-  std::cout << Dividend << "/" << Divisor  << " = " << 
-  (std::stoi(Dividend)/std::stoi(Divisor)) << " Remainder " << 
+  std::cout << round(std::stoi(Dividend)) << "/" << round(std::stoi(Divisor))
+  << " = " << (std::stoi(Dividend)/std::stoi(Divisor)) << " Remainder " << 
   (std::stoi(Dividend)%std::stoi(Divisor));
   }
 }
